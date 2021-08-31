@@ -44,8 +44,8 @@
 <body>
     <div class="sidenav">
         <a href="/">Home</a>
-        {% comment %} <a href="/create">Create</a>
-        <a href="/view">View</a>
+        <a href="/books">Books</a>
+        {% comment %} <a href="/">View</a>
 		<a href="/map">Map</a>
 		<a href="/firebase">Firebase</a>
 		{% if user.is_authenticated %}
@@ -59,14 +59,8 @@
     <div id="content", name="content", class="main">
 		<div class="row justify-content-center"> <!--wyśrodkowanie-->
 			<div class="col-8">
-				<h1 class="mt-2">My Site</h1>
-				<hr class="mt-0 mb-4"> <!--pozioma linia-->
-				{% comment %} {% if user.is_authenticated %} {% endcomment %}
 					{% block content %}
 					{% endblock %}
-				{% comment %} {% else %}
-					<p>Aby zobaczyć zawartość <a href="/login">zaloguj się.</a></p>
-				{% endif %} {% endcomment %}
 			</div>
 		</div>
     </div>
