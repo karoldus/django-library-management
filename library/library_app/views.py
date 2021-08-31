@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import BookType, Book
 
@@ -11,4 +11,5 @@ def books(request):
     return render(request, "library_app/books.html", {"ls":ls})
 
 def books_id(request, id):
-    return render(request, "library_app/base.html", {})
+    book = get_object_or_404(Book, pk=id)
+    return render(request, "library_app/books_id.html", {'book':book})
