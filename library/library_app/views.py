@@ -17,6 +17,9 @@ def books_id(request, id):
     if(request.POST.get('zwrot') and request.user.is_staff):
         book.borrower = None
         book.save()
+    if(request.POST.get('wypozycz') and request.user.is_authenticated):
+        book.borrower = request.user
+        book.save()
     return render(request, "library_app/books_id.html", {'book':book})
 
 

@@ -9,6 +9,9 @@
         <p>Autor: {{book.type.author}}</p>
         <p>Rok wydania: {{book.production_year}}</p>
         <p>{% if book.borrower is null %} Dostępna 
+                {% if user.is_authenticated %}
+                    <form method='post' action='#'> {% csrf_token %} <button type="submit" class="btn btn-outline-primary" name="wypozycz" value='{{user.username}}'>Wypożycz</button></form>
+                {% endif %}
             {% else %} 
                 {% if user.is_staff == True %} Wypożyczona przez {{book.borrower}} 
                     <form method='post' action='#'> {% csrf_token %} <button type="submit" class="btn btn-outline-primary" name="zwrot" value='zwrot'>Zwrot</button></form>
