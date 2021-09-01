@@ -15,6 +15,7 @@
             {% else %} 
                 {% if user.is_staff == True %} Wypożyczona przez {{book.borrower}} 
                     <form method='post' action='#'> {% csrf_token %} <button type="submit" class="btn btn-outline-primary" name="zwrot" value='zwrot'>Zwrot</button></form>
+                {% elif book.borrower == user%} Wypożyczona przez Ciebie.
                 {% else %} Niedostępna 
                 {% endif %} 
             {% endif %}</p>

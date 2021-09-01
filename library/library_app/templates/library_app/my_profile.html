@@ -12,7 +12,7 @@
 {% if user.book_set.all.count > 0 %}
     <ul>
         {% for book in user.book_set.all%}
-        <li>[{{book.id}}] {{book.type.title}}</li>
+        <li class="book_on_list"><a href='{{book.get_absolute_url}}'>[{{book.id}}] {{book.type.title}}</a></li>
         {% endfor %}
     </ul>
 {% else %}
