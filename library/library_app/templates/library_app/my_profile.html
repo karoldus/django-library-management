@@ -5,6 +5,7 @@
 {% block content %}
 
 <p>Witaj {{user.username}}!</p>
+{% if user.is_staff %} <p>bibliotekarz(rka)</p> {% endif %}
 <p>Imię i nazwisko: {{user.get_full_name}}</p>
 <p>e-mail: {{user.email}}</p>
 <h4>Wypożyczone książki:</h4>
