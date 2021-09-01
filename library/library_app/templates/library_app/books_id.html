@@ -3,6 +3,28 @@
 {% block title %} Szczegóły książki {% endblock %}
 
 {% block content %} 
+
+    <!-- Modal -->
+    <div class="modal fade" id="wypozyczModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Potwierdzenie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Czy na pewno chcesz wypożyczyć tę książkę?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                    <form method='post' action='#'> {% csrf_token %} <button type="submit" class="btn btn-outline-primary" name="wypozycz" value='{{user.username}}'>Wypożycz</button></form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <p>Id: {{book.id}}</p>
         <p>Tytuł: {{book.type.title}}</p>
@@ -10,7 +32,7 @@
         <p>Rok wydania: {{book.production_year}}</p>
         <p>{% if book.borrower is null %} Dostępna 
                 {% if user.is_authenticated %}
-                    <form method='post' action='#'> {% csrf_token %} <button type="submit" class="btn btn-outline-primary" name="wypozycz" value='{{user.username}}'>Wypożycz</button></form>
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#wypozyczModal">Wypożycz</button>
                 {% endif %}
             {% else %} 
                 {% if user.is_staff == True %} Wypożyczona przez {{book.borrower}} 
