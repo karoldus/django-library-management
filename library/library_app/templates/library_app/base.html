@@ -18,15 +18,13 @@
     <div class="sidenav">
         <a href="/">Home</a>
         <a href="/books">Books</a>
-        {% comment %} <a href="/">View</a>
-		<a href="/map">Map</a>
-		<a href="/firebase">Firebase</a>
 		{% if user.is_authenticated %}
-			<a href="/logout">Logout</a>
+			<a href="/accounts/profile">Witaj {{user.username}}</a>
+			<a href="/accounts/logout">Logout</a>
 		{% else %}
-			<a href="/login">Login</a>
-			<a href="/register">Register</a>
-		{% endif %} {% endcomment %}
+			<a href="/accounts/login">Login</a>
+			<a href="/accounts/register">Register</a>
+		{% endif %}
     </div>
 
     <div id="content", name="content", class="main">

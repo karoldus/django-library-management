@@ -1,0 +1,10 @@
+{% extends "library_app/base.html" %}
+
+{% block title%} Profil {{user.username}} {%endblock%}
+
+{% block content %}
+
+<p>Witaj {{user.username}}!</p>
+<p>{{user.get_full_name}}!</p>
+
+{% endblock %}
