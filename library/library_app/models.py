@@ -19,3 +19,8 @@ class Book(models.Model):
     def get_absolute_url(self):
         return f"/books/{self.id}"
     
+class Borrowing(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    borrower = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField(null=True, blank=True)

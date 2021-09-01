@@ -19,5 +19,13 @@
                 {% else %} Niedostępna 
                 {% endif %} 
             {% endif %}</p>
+        {% if user.is_staff %}
+            <p>Historia wypożyczeń:</p>
+            <ul>
+                {% for bor in book.borrowing_set.all %}
+                    <li>{{bor.borrower}}, {{bor.start_date}}, {{bor.end_date}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 {% endblock %}

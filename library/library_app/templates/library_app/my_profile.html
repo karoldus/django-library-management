@@ -13,7 +13,7 @@
 {% if user.book_set.all.count > 0 %}
     <ul>
         {% for book in user.book_set.all%}
-        <li class="book_on_list"><a href='{{book.get_absolute_url}}'>[{{book.id}}] {{book.type.title}}</a></li>
+        <li class="book_on_list"><a href='{{book.get_absolute_url}}'>[{{book.id}}] {{book.type.title}} - od {{book.borrowing_set.last.start_date}}</a></li>
         {% endfor %}
     </ul>
 {% else %}

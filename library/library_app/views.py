@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
+import datetime
 
 from .models import BookType, Book
 
@@ -16,10 +17,15 @@ def books_id(request, id):
     book = get_object_or_404(Book, pk=id)
     if(request.POST.get('zwrot') and request.user.is_staff):
         book.borrower = None
+        bor = book.borrowing_set.last()
+        bor.end_date = datetime.datetime.now()
+        bor.save()
         book.save()
     if(request.POST.get('wypozycz') and request.user.is_authenticated):
         book.borrower = request.user
+        book.borrowing_set.create(borrower=request.user, start_date=datetime.datetime.now())
         book.save()
+
     return render(request, "library_app/books_id.html", {'book':book})
 
 
