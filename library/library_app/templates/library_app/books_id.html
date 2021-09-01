@@ -8,6 +8,6 @@
         <p>Tytuł: {{book.type.title}}</p>
         <p>Autor: {{book.type.author}}</p>
         <p>Rok wydania: {{book.production_year}}</p>
-        <p>{% if book.borrower is null %} Dostępna {% else %} Wypozyczona przez {{book.borrower}} {% endif %}</p>
+        <p>{% if book.borrower is null %} Dostępna {% else %} Wypożyczona przez {{book.borrower}} {% endif %}</p>
     </div>
 {% endblock %}
