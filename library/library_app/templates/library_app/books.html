@@ -9,7 +9,7 @@
         <h4 class="mt-3">{{type.title}} - {{type.author}}</h4>
         <ul>
             {% for book in type.book_set.all%}
-                <li class="book_on_list"><a href='{{book.get_absolute_url}}'>[{{book.id}}] {{book.production_year}} - {% if book.avalible == True %} <span class="avalible_book_on_list">dostępna</span> 
+                <li class="book_on_list"><a href='{{book.get_absolute_url}}'>[{{book.id}}] {{book.production_year}} - {% if book.borrower is null %} <span class="avalible_book_on_list">dostępna</span> 
                     {% else %} <span class="notavalible_book_on_list">niedostępna</span> {% endif %}</a></li>
             {% endfor %}
         </ul>
