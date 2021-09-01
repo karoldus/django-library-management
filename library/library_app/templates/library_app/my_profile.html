@@ -17,7 +17,19 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>Brak wypożyczonych książek</p>
+    <p>Brak aktualnie wypożyczonych książek</p>
+{% endif %}
+
+<h4>Historia wypożyczeń:</h4>
+
+{% if user.borrowing_set.all.count > 0 %}
+    <ul>
+        {% for bor in user.borrowing_set.all%}
+            <li class="book_on_list"><a href='{{bor.book.get_absolute_url}}'>[{{bor.book.id}}] {{bor.book.type.title}}</a>, {{bor.start_date}}, {{bor.end_date}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Jeszcze nic nie wypożyczyłeś/aś</p>
 {% endif %}
 
 {% endblock %}
