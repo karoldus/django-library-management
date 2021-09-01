@@ -1,0 +1,22 @@
+{% extends "library_app/base.html" %}
+
+{% block title%} My profil - {{user.username}} {%endblock%}
+
+{% block content %}
+
+<p>Witaj {{user.username}}!</p>
+<p>Imię i nazwisko: {{user.get_full_name}}</p>
+<p>e-mail: {{user.email}}</p>
+<h4>Wypożyczone książki:</h4>
+
+{% if user.book_set.all.count > 0 %}
+    <ul>
+        {% for book in user.book_set.all%}
+        <li>[{{book.id}}] {{book.type.title}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak wypożyczonych książek</p>
+{% endif %}
+
+{% endblock %}
